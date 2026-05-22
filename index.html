@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Remesh VP – Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -156,20 +157,262 @@
 
     section:nth-child(even) { background: var(--section-bg); }
 
+    /* ── PROFILE SECTION ── */
+    #profile {
+      background: var(--white);
+      padding: 5rem 2rem;
+    }
+
+    .profile-wrapper {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .profile-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
+    .profile-image-wrap {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      flex-shrink: 0;
+    }
+
+    .profile-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      opacity: 0.5;
+    }
+
+    .profile-image-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,162,80,0.2);
+    }
+
+    .profile-image-wrap img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--white);
+      box-shadow: 0 8px 32px rgba(11,29,53,0.18), 0 2px 8px rgba(201,162,80,0.15);
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-name-block { text-align: center; }
+
+    .profile-name-block h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.3rem;
+    }
+
+    .profile-name-block .profile-title {
+      font-size: 0.8rem; color: var(--gold);
+      font-weight: 500; letter-spacing: 0.06em; margin-bottom: 0.4rem;
+    }
+
+    .profile-name-block .profile-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1rem; color: var(--text-soft);
+    }
+
+    .profile-location {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.82rem; color: var(--text-soft);
+    }
+
+    .profile-location i { color: var(--gold); font-size: 0.85rem; }
+
+    .profile-skills-mini {
+      width: 100%;
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.2rem;
+    }
+
+    .profile-skills-mini h4 {
+      font-size: 0.72rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 500; margin-bottom: 0.8rem;
+    }
+
+    .mini-skills-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .mini-skill {
+      display: flex; align-items: center; gap: 0.55rem;
+      font-size: 0.82rem; color: var(--text-soft);
+    }
+
+    .mini-skill i { color: var(--gold); width: 14px; font-size: 0.75rem; flex-shrink: 0; }
+
+    .profile-summary p {
+      font-size: 0.96rem; color: var(--text-soft);
+      line-height: 1.85; margin-bottom: 1rem;
+    }
+
+    .profile-summary p:last-of-type { margin-bottom: 0; }
+
+    .profile-highlights {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .highlight-item {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--border); border-radius: 3px;
+      background: var(--section-bg);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .highlight-item:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 16px rgba(201,162,80,0.1);
+    }
+
+    .highlight-icon {
+      width: 36px; height: 36px;
+      background: rgba(201,162,80,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .highlight-icon i { color: var(--gold); font-size: 0.88rem; }
+
+    .highlight-text strong {
+      display: block; font-size: 0.85rem;
+      font-weight: 500; color: var(--navy); margin-bottom: 0.15rem;
+    }
+
+    .highlight-text span { font-size: 0.78rem; color: var(--text-soft); }
+
+    /* ── SERVICES SECTION ── */
+    #services { background: var(--section-bg); padding: 5rem 2rem; }
+    #services .section-title { text-align: center; }
+    #services .section-label { text-align: center; }
+
+    .services-intro {
+      text-align: center; font-size: 0.96rem; color: var(--text-soft);
+      max-width: 560px; margin: -1.5rem auto 3rem; line-height: 1.8;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.2rem 1.8rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      position: relative; overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201,162,80,0.4);
+      box-shadow: 0 12px 40px rgba(11,29,53,0.10);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon-wrap {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, rgba(201,162,80,0.15), rgba(201,162,80,0.05));
+      border: 1px solid rgba(201,162,80,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .service-card:hover .service-icon-wrap {
+      background: linear-gradient(135deg, rgba(201,162,80,0.25), rgba(201,162,80,0.1));
+      border-color: rgba(201,162,80,0.5);
+    }
+
+    .service-icon-wrap i { font-size: 1.3rem; color: var(--gold); }
+
+    .service-number {
+      position: absolute; top: 1.4rem; right: 1.6rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 700;
+      color: rgba(201,162,80,0.08); line-height: 1; pointer-events: none;
+    }
+
+    .service-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--navy); line-height: 1.2;
+    }
+
+    .service-desc {
+      font-size: 0.88rem; color: var(--text-soft);
+      line-height: 1.75; flex: 1;
+    }
+
+    .service-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem;
+    }
+
+    .service-tag {
+      font-size: 0.72rem; padding: 0.2rem 0.65rem;
+      background: rgba(201,162,80,0.1); color: #8a6820;
+      border-radius: 2px; border: 1px solid rgba(201,162,80,0.2);
+      letter-spacing: 0.04em;
+    }
+
+    .service-cta {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.8rem; font-weight: 500; color: var(--gold);
+      text-decoration: none; margin-top: 0.4rem;
+      letter-spacing: 0.04em; transition: gap 0.2s;
+    }
+
+    .service-cta:hover { gap: 0.7rem; }
+    .service-cta i { font-size: 0.75rem; }
+
     /* ── ABOUT ── */
     .about-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 3rem; align-items: start;
     }
 
-    .about-text p {
-      color: var(--text-soft); font-size: 0.97rem; margin-bottom: 1rem;
-    }
+    .about-text p { color: var(--text-soft); font-size: 0.97rem; margin-bottom: 1rem; }
     .about-text p:last-child { margin-bottom: 0; }
 
-    .about-stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
-    }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 
     .stat-card {
       border: 1px solid var(--border);
@@ -185,8 +428,7 @@
 
     .stat-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem; font-weight: 700; color: var(--navy);
-      line-height: 1;
+      font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1;
     }
 
     .stat-label { font-size: 0.78rem; color: var(--text-soft); margin-top: 0.3rem; }
@@ -199,10 +441,7 @@
       width: 1px; background: var(--border);
     }
 
-    .tl-item {
-      display: flex; gap: 1.8rem; margin-bottom: 2.6rem;
-      position: relative;
-    }
+    .tl-item { display: flex; gap: 1.8rem; margin-bottom: 2.6rem; position: relative; }
 
     .tl-dot {
       flex-shrink: 0; width: 31px; height: 31px; border-radius: 50%;
@@ -214,8 +453,7 @@
     .tl-dot svg { width: 13px; height: 13px; fill: var(--gold); }
 
     .tl-body {
-      flex: 1;
-      background: var(--white); border: 1px solid var(--border);
+      flex: 1; background: var(--white); border: 1px solid var(--border);
       border-radius: 3px; padding: 1.5rem;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
@@ -246,14 +484,9 @@
       margin-bottom: 0.8rem; letter-spacing: 0.03em;
     }
 
-    .tl-body p {
-      font-size: 0.88rem; color: var(--text-soft); margin-bottom: 0.6rem;
-    }
+    .tl-body p { font-size: 0.88rem; color: var(--text-soft); margin-bottom: 0.6rem; }
     .tl-body p:last-child { margin-bottom: 0; }
-
-    .tl-body ul {
-      list-style: none; padding: 0; margin-top: 0.6rem;
-    }
+    .tl-body ul { list-style: none; padding: 0; margin-top: 0.6rem; }
 
     .tl-body ul li {
       font-size: 0.86rem; color: var(--text-soft);
@@ -267,8 +500,7 @@
 
     /* ── EDUCATION ── */
     .edu-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.2rem;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem;
     }
 
     .edu-card {
@@ -284,14 +516,10 @@
 
     .edu-degree {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem; font-weight: 700; color: var(--navy);
-      margin-bottom: 0.35rem;
+      font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem;
     }
 
-    .edu-field {
-      font-size: 0.82rem; color: var(--gold); font-weight: 500; margin-bottom: 0.6rem;
-    }
-
+    .edu-field { font-size: 0.82rem; color: var(--gold); font-weight: 500; margin-bottom: 0.6rem; }
     .edu-inst { font-size: 0.82rem; color: var(--text-soft); }
 
     .edu-year {
@@ -302,7 +530,6 @@
 
     /* ── SKILLS & CERTS ── */
     .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-
     .skill-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
 
     .skill-tag {
@@ -312,11 +539,7 @@
       transition: border-color 0.2s, background 0.2s, color 0.2s;
     }
 
-    .skill-tag:hover {
-      border-color: var(--gold);
-      background: var(--gold);
-      color: var(--navy);
-    }
+    .skill-tag:hover { border-color: var(--gold); background: var(--gold); color: var(--navy); }
 
     .cert-list { list-style: none; margin-top: 0.5rem; }
 
@@ -325,6 +548,7 @@
       padding: 0.75rem 0; border-bottom: 1px solid var(--border);
       font-size: 0.88rem; color: var(--text-soft);
     }
+
     .cert-list li:last-child { border-bottom: none; }
 
     .cert-icon {
@@ -332,6 +556,7 @@
       background: var(--navy); display: flex; align-items: center;
       justify-content: center; flex-shrink: 0;
     }
+
     .cert-icon svg { width: 13px; height: 13px; fill: var(--gold); }
 
     /* ── PUBLICATIONS ── */
@@ -342,6 +567,7 @@
       font-size: 0.88rem; color: var(--text-soft);
       display: flex; align-items: flex-start; gap: 0.8rem;
     }
+
     .pub-list li:last-child { border-bottom: none; }
 
     .pub-bullet {
@@ -376,15 +602,8 @@
       color: var(--gold); margin-bottom: 0.5rem;
     }
 
-    .contact-value {
-      font-size: 0.88rem; color: rgba(255,255,255,0.8);
-      word-break: break-all;
-    }
-
-    .contact-value a {
-      color: rgba(255,255,255,0.8); text-decoration: none;
-      transition: color 0.2s;
-    }
+    .contact-value { font-size: 0.88rem; color: rgba(255,255,255,0.8); word-break: break-all; }
+    .contact-value a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }
     .contact-value a:hover { color: var(--gold-light); }
 
     /* ── FOOTER ── */
@@ -407,6 +626,11 @@
       background: rgba(255,255,255,0.7); border-radius: 1px;
     }
 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 768px) {
       .hamburger { display: flex; }
 
@@ -418,20 +642,22 @@
       }
 
       nav ul.open { display: flex; }
-
-      nav ul li a {
-        display: block; padding: 0.65rem 2rem;
-        font-size: 0.85rem;
-      }
+      nav ul li a { display: block; padding: 0.65rem 2rem; font-size: 0.85rem; }
 
       .about-grid { grid-template-columns: 1fr; }
       .about-stats { grid-template-columns: 1fr 1fr; }
       .sc-grid { grid-template-columns: 1fr; }
+      .profile-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+      .profile-left { align-items: center; }
+      .profile-highlights { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
       .about-stats { grid-template-columns: 1fr 1fr; }
       .edu-grid { grid-template-columns: 1fr; }
+      .profile-highlights { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -444,6 +670,8 @@
     <span></span><span></span><span></span>
   </button>
   <ul id="nav-links">
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
@@ -458,7 +686,7 @@
   <div class="hero-inner">
     <div class="hero-tag">Defence · Quality Assurance · Education</div>
     <h1 class="hero-name">Remesh VP</h1>
-    <p class="hero-quals">M.Tech &nbsp;·&nbsp; MBA (Finance &amp; HR) &nbsp;·&nbsp; PTSC &nbsp;·&nbsp; Black Belt in karate</p>
+    <p class="hero-quals">M.Tech &nbsp;·&nbsp; MBA (Finance &amp; HR) &nbsp;·&nbsp; PTSC &nbsp;·&nbsp; Black Belt in Karate</p>
     <div class="hero-divider"></div>
     <p class="hero-tagline">Perfection in Execution</p>
     <div class="hero-meta">
@@ -471,7 +699,160 @@
         30+ Years in Indian Military
       </span>
     </div>
-    <a href="#about" class="btn">View Profile</a>
+    <a href="#profile" class="btn">View Profile</a>
+  </div>
+</section>
+
+<!-- PROFILE SECTION -->
+<section id="profile">
+  <div class="section-inner">
+    <div class="profile-wrapper">
+
+      <!-- LEFT -->
+      <div class="profile-left">
+        <div class="profile-image-wrap">
+          <img src="remesh.jpeg" alt="Remesh VP" />
+        </div>
+
+        <div class="profile-name-block">
+          <h2>Remesh VP</h2>
+          <p class="profile-title">M.Tech &nbsp;·&nbsp; MBA (Finance &amp; HR) &nbsp;·&nbsp; PTSC &nbsp;·&nbsp; Black Belt</p>
+          <p class="profile-tagline">"Perfection in Execution"</p>
+        </div>
+
+        <div class="profile-location">
+          <i class="fa-solid fa-location-dot"></i>
+          Bengaluru, Karnataka, India
+        </div>
+
+        <div class="profile-skills-mini">
+          <h4>Top Skills</h4>
+          <div class="mini-skills-list">
+            <div class="mini-skill"><i class="fa-solid fa-circle-check"></i> Board Level Management</div>
+            <div class="mini-skill"><i class="fa-solid fa-circle-check"></i> Teaching &amp; Mentoring</div>
+            <div class="mini-skill"><i class="fa-solid fa-circle-check"></i> Statistical Data Analysis</div>
+            <div class="mini-skill"><i class="fa-solid fa-circle-check"></i> Defence Quality Assurance</div>
+            <div class="mini-skill"><i class="fa-solid fa-circle-check"></i> Risk Assessment &amp; Compliance</div>
+            <div class="mini-skill"><i class="fa-solid fa-circle-check"></i> Leadership &amp; Strategic Planning</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="profile-right">
+        <p class="section-label">Professional Profile</p>
+        <h2 class="section-title" style="margin-bottom:1.4rem;">Who I Am</h2>
+
+        <div class="profile-summary">
+          <p>Seasoned defence and quality assurance professional with 30+ years of experience in the Indian Military and defence sector. Currently serving as Senior Quality Assurance Officer (DGQA), specializing in inspection, certification, and reliability of defence equipment and ammunition.</p>
+          <p>Strong expertise in ISO/IEC 17020 standards, quality management systems, risk assessment, and defect investigation. Proven leader with experience in board-level roles, mentoring, teaching, and strategic decision-making across complex, high-stakes environments.</p>
+        </div>
+
+        <div class="profile-highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <div class="highlight-text">
+              <strong>Board Member</strong>
+              <span>Kendriya Vidyalaya &nbsp;·&nbsp; 2026–Present</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="highlight-text">
+              <strong>Senior QAO – DGQA</strong>
+              <span>Ordnance Factory Varangaon &nbsp;·&nbsp; 2023–Present</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <div class="highlight-text">
+              <strong>Member – ViratBharat</strong>
+              <span>MSME Operations &nbsp;·&nbsp; 2022–Present</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon"><i class="fa-solid fa-hands-praying"></i></div>
+            <div class="highlight-text">
+              <strong>Teacher – Art of Living</strong>
+              <span>Certified Teacher &nbsp;·&nbsp; 19+ Years</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon"><i class="fa-solid fa-star"></i></div>
+            <div class="highlight-text">
+              <strong>Officer Commanding</strong>
+              <span>Indian Army &nbsp;·&nbsp; 1995–2014</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="highlight-text">
+              <strong>UGC NET Qualified</strong>
+              <span>Teaching Eligibility Certified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">What I Offer</p>
+    <h2 class="section-title">Services</h2>
+    <p class="services-intro">Leveraging three decades of operational experience to deliver strategic value across defence, education, and quality management domains.</p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-number">01</span>
+        <div class="service-icon-wrap">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <h3 class="service-title">Management Consulting</h3>
+        <p class="service-desc">Strategic advisory for defence organisations, public sector enterprises, and MSMEs. Drawing from board-level governance experience and decades of military leadership to guide operational efficiency, risk frameworks, and institutional development.</p>
+        <div class="service-tags">
+          <span class="service-tag">Strategic Planning</span>
+          <span class="service-tag">Board Governance</span>
+          <span class="service-tag">Risk Frameworks</span>
+        </div>
+        <a href="#contact" class="service-cta">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-number">02</span>
+        <div class="service-icon-wrap">
+          <i class="fa-solid fa-chalkboard-user"></i>
+        </div>
+        <h3 class="service-title">Education Consulting</h3>
+        <p class="service-desc">Mentoring, academic guidance, and institutional consulting for educational bodies and individual learners. Certified teacher and UGC NET qualified professional offering curriculum design support, faculty development, and student mentoring programmes.</p>
+        <div class="service-tags">
+          <span class="service-tag">Mentoring</span>
+          <span class="service-tag">Curriculum Design</span>
+          <span class="service-tag">UGC NET Guidance</span>
+        </div>
+        <a href="#contact" class="service-cta">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-number">03</span>
+        <div class="service-icon-wrap">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="service-title">Quality Assurance Consulting</h3>
+        <p class="service-desc">End-to-end QA advisory for defence manufacturers, ordnance agencies, and industrial units. Specialising in ISO/IEC 17020 compliance, proof testing protocols, inspection system design, defect investigation methodologies, and audit preparation.</p>
+        <div class="service-tags">
+          <span class="service-tag">ISO/IEC 17020</span>
+          <span class="service-tag">Defect Investigation</span>
+          <span class="service-tag">Audit Readiness</span>
+        </div>
+        <a href="#contact" class="service-cta">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -484,7 +865,7 @@
       <div class="about-text">
         <p>Remesh VP is a retired Indian Army officer and defence quality assurance professional based in Bengaluru, Karnataka. He holds an M.Tech in Mechanical Engineering from Jawaharlal Nehru University, an MBA in HR from IGNOU, and an MBA in Finance from Dayananda Sagar Institutions, along with a Diploma in Quality Assurance from Bharathiar University.</p>
         <p>He is currently serving as Senior Quality Assurance Officer (SQAO) with DGQA at Ordnance Factory Varangaon, where his work covers inspection, proof testing, and certification of ammunition and defence stores. His professional focus has been on maintaining compliance with ISO/IEC 17020:2012 standards and coordinating between manufacturing units, R&D agencies, and operational users.</p>
-        <p>Beyond his defence career, he is a certified Art of Living teacher since 2007, Black Belt holder in karate , and holds the PTSC certification. He is also a Board Member at Kendriya Vidyalaya Varangaon and supports Indian MSME initiatives through ViratBharat Enterprises.</p>
+        <p>Beyond his defence career, he is a certified Art of Living teacher since 2007, Black Belt holder in karate, and holds the PTSC certification. He is also a Board Member at Kendriya Vidyalaya Varangaon and supports Indian MSME initiatives through ViratBharat Enterprises.</p>
       </div>
       <div class="about-stats">
         <div class="stat-card">
@@ -717,7 +1098,7 @@
         <ul class="cert-list">
           <li>
             <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div>
-            Black Belt in karate
+            Black Belt in Karate
           </li>
           <li>
             <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div>
@@ -735,16 +1116,14 @@
             <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div>
             Lead Auditor Course
           </li>
-         
           <li>
             <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div>
             Research Paper Presented &amp; Published
           </li>
           <li>
             <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div>
-            Postgraduate Certification in Quality and Reliability — IIT Kharagpur (15th May)
+            Postgraduate Certification in Quality and Reliability — IIT Kharagpur
           </li>
-          
         </ul>
       </div>
 
@@ -806,7 +1185,6 @@
   const ham = document.getElementById('ham');
   const navLinks = document.getElementById('nav-links');
   ham.addEventListener('click', () => navLinks.classList.toggle('open'));
-
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => navLinks.classList.remove('open'));
   });
@@ -822,9 +1200,32 @@
         if (active) active.style.color = '#e0bb78';
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.35 });
 
   sections.forEach(s => observer.observe(s));
+
+  const revealEls = document.querySelectorAll(
+    '.highlight-item, .service-card, .stat-card, .edu-card, .tl-item'
+  );
+
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, (i % 4) * 80);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  revealEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    revealObserver.observe(el);
+  });
 </script>
 </body>
 </html>
